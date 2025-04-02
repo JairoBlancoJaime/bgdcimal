@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.joining;
 
 public class MultiMap<K, V> {
 
@@ -23,7 +27,7 @@ public class MultiMap<K, V> {
             this.values.add(ListAux);
         } else {
             if (checkIfAbsent) {
-                if (!this.values.contains(value)) {
+                if (!this.values.get(i).contains(value)) {
                     this.values.get((i)).add(value);
                 };
             } else {
@@ -75,4 +79,31 @@ public class MultiMap<K, V> {
         return salida;
     }
 
+    public long totalSize(){
+
+        Long total = 0L;
+
+        for (int i = 0; i <this.values.size() ; i++) {
+            total += this.values.get(i).size();
+        }
+
+        return total;
+
+    }
+
+    @Override
+    public String toString() {
+
+        return "key - map\n" +
+                this.keys.stream().map(key -> {
+
+                    String map = this.get(key).stream()
+                            .map(v -> v.toString())
+                            .collect(joining(", ", "[ ", " ]" ));
+
+                    return key + " - " + map ;
+
+                }).collect(joining("\n"));
+
+    }
 }
