@@ -9,6 +9,10 @@ public class OrderDetail {
 
     public BigDecimal calcSubTotal() {
 
+        int iva = TaxType.SUPERREDUCED.valor;
+        BigDecimal subTotal = new BigDecimal()
+
+
         return null;
     }
 

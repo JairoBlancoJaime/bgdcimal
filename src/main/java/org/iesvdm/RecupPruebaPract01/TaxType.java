@@ -6,5 +6,9 @@ public enum TaxType {
     REDUCED (10),
     SUPERREDUCED (4);
 
+    public final Integer valor;
 
+    TaxType(Integer valor) {
+        this.valor = valor;
+    }
 }
