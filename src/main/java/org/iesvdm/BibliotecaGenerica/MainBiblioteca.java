@@ -2,7 +2,10 @@ package org.iesvdm.BibliotecaGenerica;
 
 public class MainBiblioteca {
 
-    Estanteria<Libro> libroEstanteria;
-    Estanteria<Revista> revistaEstanteria;
+    public static void main(String[] args) {
 
+        Estanteria<Libro> libroEstanteria;
+        Estanteria<Revista> revistaEstanteria;
+
+    }
 }
