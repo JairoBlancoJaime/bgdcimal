@@ -2,48 +2,26 @@ package org.iesvdm.BibliotecaGenerica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
-public class Estanteria<T> {
+public class Estanteria<T extends Item> {
 
-    /*
-    ArrayList<Estanteria<T>> estanteria;
-     */
+    private List<Balda<T>> baldas = new ArrayList<>();
 
-    List<T> lista = new ArrayList<>();
+    public Estanteria(int numBaldas) {
+        this.baldas = new ArrayList<>(numBaldas);
 
-    public void agregar(T elemento) {
-
-        lista.add(elemento);
-        System.out.println("Se ha añadido correctamente.");
-
-    }
-
-    public T obtenerPrimero() {
-
-        lista.getFirst();
-        System.out.println("Este es el primer elemento.");
-        return null;    // Aqui habria que devolver el lista.getFirst para que devuelva el primer elemento y no devolver null, no?
+        IntStream.range(0,numBaldas).forEach(i -> {
+            this.baldas.add(new Balda<>());
+        });
 
     }
 
-    public void mostrarTodo() {
+    public void agregar(int numBalda, T t) {
 
-        System.out.println("La lista completa:\n" + lista); // Esto no le haria falta un toString a la lista?
-
-    }
-
-    public boolean estaVacia() {
-
-        if (lista.isEmpty()) {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
+        this.baldas.get(numBalda-1).agregar(t);
 
     }
 
 }
+
